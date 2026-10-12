@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Michael Porter en Dirección y Planeamiento de TI | Mapas Conceptuales</title>
+  <meta name="description" content="Mapas conceptuales interactivos de las 5 Fuerzas y las Tres Estrategias Genéricas de Michael Porter aplicadas a Planeamiento y Dirección de TI (PETI).">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              900: '#1e3a8a'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Mermaid.js v10 CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body class="min-h-full flex flex-col bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 transition-colors duration-200">
+
+  <!-- HEADER DE NAVEGACIÓN -->
+  <header id="header-bar" class="sticky top-0 z-40 border-b border-slate-200 dark:border-slate-800 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Logotipo y Título del Curso -->
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20">
+            <i data-lucide="network" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <span class="text-xs font-bold tracking-wider uppercase text-blue-600 dark:text-blue-400">Planeamiento y Dirección de TI</span>
+            <h1 class="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white leading-tight">Estrategias Competitivas de Porter</h1>
+          </div>
+        </div>
+
+        <!-- Botones de Acción de Cabecera -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <button id="btn-presentation" title="Modo Presentación (Pantalla Completa)" 
+            class="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-xs font-semibold flex items-center gap-1.5 transition-colors">
+            <i data-lucide="maximize" class="w-4 h-4"></i>
+            <span class="hidden md:inline">Presentación</span>
+          </button>
+
+          <button id="btn-theme-toggle" title="Alternar tema claro/oscuro"
+            class="p-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 transition-colors">
+            <i data-lucide="sun" class="w-4 h-4 hidden dark:block"></i>
+            <i data-lucide="moon" class="w-4 h-4 block dark:hidden"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Barra de Pestañas / Temas -->
+      <nav class="flex space-x-6 border-t border-slate-100 dark:border-slate-800/60 overflow-x-auto text-sm">
+        <button data-tab-target="fuerzas" class="py-3 px-1 border-b-2 border-blue-600 text-blue-600 dark:text-blue-400 font-bold flex items-center gap-2 whitespace-nowrap transition-colors">
+          <i data-lucide="shield-alert" class="w-4 h-4"></i>
+          <span>1. Las 5 Fuerzas de Porter</span>
+        </button>
+
+        <button data-tab-target="estrategias" class="py-3 px-1 border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 flex items-center gap-2 whitespace-nowrap transition-colors">
+          <i data-lucide="compass" class="w-4 h-4"></i>
+          <span>2. Las Tres Estrategias Genéricas</span>
+        </button>
+
+        <button data-tab-target="integracion" class="py-3 px-1 border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 flex items-center gap-2 whitespace-nowrap transition-colors">
+          <i data-lucide="layout-grid" class="w-4 h-4"></i>
+          <span>3. Matriz de Alineación TI</span>
+        </button>
+
+        <button data-tab-target="teoria" class="py-3 px-1 border-b-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-slate-200 flex items-center gap-2 whitespace-nowrap transition-colors">
+          <i data-lucide="book-open" class="w-4 h-4"></i>
+          <span>4. Glosario y Marco PETI</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main id="main-content" class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
+
+    <!-- ==================== PESTAÑA 1: LAS 5 FUERZAS DE PORTER ==================== -->
+    <section id="tab-content-fuerzas" class="tab-pane space-y-6">
+      
+      <!-- Banner Introductorio -->
+      <div class="p-5 rounded-2xl bg-gradient-to-r from-blue-900 to-indigo-950 text-white shadow-lg relative overflow-hidden">
+        <div class="relative z-10 max-w-3xl">
+          <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-blue-500/30 text-blue-200 border border-blue-400/30 mb-2">
+            Análisis de la Industria y Entorno TI
+          </span>
+          <h2 class="text-xl sm:text-2xl font-black">Mapa Conceptual: Las 5 Fuerzas de Michael Porter</h2>
+          <p class="text-xs sm:text-sm text-blue-100/90 mt-1 leading-relaxed">
+            Examina cómo las fuerzas competitivas moldean la estrategia de Tecnologías de la Información. Haz clic en cualquier nodo del diagrama o en las tarjetas laterales para explorar su impacto en la infraestructura de TI y las decisiones del CIO.
+          </p>
+        </div>
+        <div class="absolute -right-10 -bottom-10 opacity-10 text-white pointer-events-none">
+          <i data-lucide="shield" class="w-64 h-64"></i>
+        </div>
+      </div>
+
+      <!-- Layout de 2 Columnas: Diagrama + Panel de Detalle -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Columna Izquierda: Visor del Mapa Conceptual (7 cols) -->
+        <div class="lg:col-span-7 space-y-4">
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100 dark:border-slate-800">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Diagrama Conceptual Interactivo</span>
+              </div>
+              <!-- Controles de Navegación del Diagrama -->
+              <div class="flex items-center gap-1.5">
+                <button onclick="zoomIn('fuerzas')" title="Acercar (+)" class="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs text-slate-600 dark:text-slate-300">
+                  <i data-lucide="zoom-in" class="w-4 h-4"></i>
+                </button>
+                <button onclick="zoomOut('fuerzas')" title="Alejar (-)" class="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs text-slate-600 dark:text-slate-300">
+                  <i data-lucide="zoom-out" class="w-4 h-4"></i>
+                </button>
+                <button onclick="resetZoom('fuerzas')" title="Restablecer vista" class="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs text-slate-600 dark:text-slate-300">
+                  <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                </button>
+                <button id="btn-export-fuerzas" title="Exportar como Imagen PNG" class="px-2.5 py-1.5 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold flex items-center gap-1">
+                  <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                  <span>Exportar</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Contenedor del Viewport SVG -->
+            <div id="viewport-fuerzas" class="diagram-viewport flex items-center justify-center p-2">
+              <div id="mermaid-fuerzas" class="mermaid-container w-full"></div>
+            </div>
+            <p class="text-[11px] text-center text-slate-400 dark:text-slate-500 mt-2">
+              💡 Arrastra para desplazar el diagrama, usa la rueda del ratón para zoom o haz clic en cualquier nodo para ver su análisis de TI.
+            </p>
+          </div>
+
+          <!-- Lista de las 5 Fuerzas (Tarjetas de Selección Rápida) -->
+          <div class="space-y-2">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Explorar Fuerzas del Entorno</h3>
+            <div id="cards-fuerzas-list" class="space-y-2.5"></div>
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Panel de Detalles de TI (5 cols) -->
+        <div class="lg:col-span-5">
+          <div class="sticky top-24 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+            <div id="details-panel" class="min-h-[500px]">
+              <!-- Cargado dinámicamente por app.js -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== PESTAÑA 2: LAS TRES ESTRATEGIAS GENÉRICAS ==================== -->
+    <section id="tab-content-estrategias" class="tab-pane hidden space-y-6">
+      
+      <!-- Banner Estrategias -->
+      <div class="p-5 rounded-2xl bg-gradient-to-r from-purple-900 to-indigo-950 text-white shadow-lg relative overflow-hidden">
+        <div class="relative z-10 max-w-3xl">
+          <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-500/30 text-purple-200 border border-purple-400/30 mb-2">
+            Posicionamiento Estratégico y PETI
+          </span>
+          <h2 class="text-xl sm:text-2xl font-black">Mapa Conceptual: Las Tres Estrategias Genéricas</h2>
+          <p class="text-xs sm:text-sm text-purple-100/90 mt-1 leading-relaxed">
+            Alinea el portafolio de sistemas y proyectos de TI con la ventaja competitiva: <b>Liderazgo en Costos</b> (eficiencia operativa), <b>Diferenciación</b> (valor único con IA y UX) o <b>Enfoque</b> (nichos hiperespecializados).
+          </p>
+        </div>
+        <div class="absolute -right-10 -bottom-10 opacity-10 text-white pointer-events-none">
+          <i data-lucide="target" class="w-64 h-64"></i>
+        </div>
+      </div>
+
+      <!-- Layout de 2 Columnas -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        
+        <!-- Columna Izquierda: Diagrama Mermaid + Matriz 2x2 (7 cols) -->
+        <div class="lg:col-span-7 space-y-6">
+          
+          <!-- Contenedor del Diagrama Jerárquico -->
+          <div class="p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+            <div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-100 dark:border-slate-800">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-purple-500 animate-pulse"></span>
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Jerarquía y Pilares de TI</span>
+              </div>
+              <div class="flex items-center gap-1.5">
+                <button onclick="zoomIn('estrategias')" title="Acercar" class="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs text-slate-600 dark:text-slate-300">
+                  <i data-lucide="zoom-in" class="w-4 h-4"></i>
+                </button>
+                <button onclick="zoomOut('estrategias')" title="Alejar" class="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs text-slate-600 dark:text-slate-300">
+                  <i data-lucide="zoom-out" class="w-4 h-4"></i>
+                </button>
+                <button onclick="resetZoom('estrategias')" title="Restablecer" class="p-1.5 rounded-lg border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-800 text-xs text-slate-600 dark:text-slate-300">
+                  <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+                </button>
+                <button id="btn-export-estrategias" title="Exportar como Imagen" class="px-2.5 py-1.5 rounded-lg bg-purple-600 hover:bg-purple-700 text-white text-xs font-semibold flex items-center gap-1">
+                  <i data-lucide="download" class="w-3.5 h-3.5"></i>
+                  <span>Exportar</span>
+                </button>
+              </div>
+            </div>
+
+            <div id="viewport-estrategias" class="diagram-viewport flex items-center justify-center p-2">
+              <div id="mermaid-estrategias" class="mermaid-container w-full"></div>
+            </div>
+            <p class="text-[11px] text-center text-slate-400 dark:text-slate-500 mt-2">
+              💡 Haz clic en los nodos de estrategia para analizar los pilares tecnológicos y el riesgo "Atrapado en el medio".
+            </p>
+          </div>
+
+          <!-- Matriz 2x2 Interactiva de Michael Porter -->
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3">Matriz Estratégica 2×2 (Ventaja vs Ámbito)</h3>
+            <div class="matrix-grid" id="cards-estrategias-list">
+              <!-- Cargado dinámicamente -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Columna Derecha: Panel de Detalles de Estrategias (5 cols) -->
+        <div class="lg:col-span-5">
+          <div class="sticky top-24 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden">
+            <div id="details-panel-estrategias-mirror" class="min-h-[500px]">
+              <!-- El panel principal atiende a ambas vistas mediante selectItem -->
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== PESTAÑA 3: MATRIZ DE INTEGRACIÓN ESTRATÉGICA TI ==================== -->
+    <section id="tab-content-integracion" class="tab-pane hidden space-y-6">
+      
+      <div class="p-5 rounded-2xl bg-gradient-to-r from-emerald-900 to-teal-950 text-white shadow-lg">
+        <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/30 text-emerald-200 border border-emerald-400/30 mb-2">
+          Alineación Estratégica Directiva
+        </span>
+        <h2 class="text-xl sm:text-2xl font-black">Matriz de Neutralización: Fuerzas de Porter vs Estrategias TI</h2>
+        <p class="text-xs sm:text-sm text-emerald-100/90 mt-1 leading-relaxed">
+          Cómo cada una de las tres estrategias genéricas utiliza los recursos y arquitecturas de TI para blindar la organización frente a las 5 fuerzas competitivas de la industria.
+        </p>
+      </div>
+
+      <!-- Tabla Responsive -->
+      <div class="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-sm overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="border-b border-slate-200 dark:border-slate-800 bg-slate-100/75 dark:bg-slate-800/60">
+              <th class="p-4 text-xs font-black uppercase tracking-wider text-slate-700 dark:text-slate-200 w-1/4">
+                Fuerza Competitiva
+              </th>
+              <th class="p-4 text-xs font-black uppercase tracking-wider text-blue-700 dark:text-blue-400 w-1/4">
+                Liderazgo en Costos (TI)
+              </th>
+              <th class="p-4 text-xs font-black uppercase tracking-wider text-purple-700 dark:text-purple-400 w-1/4">
+                Diferenciación (TI)
+              </th>
+              <th class="p-4 text-xs font-black uppercase tracking-wider text-emerald-700 dark:text-emerald-400 w-1/4">
+                Enfoque o Nicho (TI)
+              </th>
+            </tr>
+          </thead>
+          <tbody id="tabla-integracion-body">
+            <!-- Cargado dinámicamente -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ==================== PESTAÑA 4: GLOSARIO Y MARCO PETI ==================== -->
+    <section id="tab-content-teoria" class="tab-pane hidden space-y-6">
+      
+      <div class="p-5 rounded-2xl bg-gradient-to-r from-slate-900 to-indigo-950 text-white shadow-lg">
+        <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-500/30 text-slate-200 border border-slate-400/30 mb-2">
+          Fundamentos Académicos
+        </span>
+        <h2 class="text-xl sm:text-2xl font-black">Guía Rápida para el Plan Estratégico de TI (PETI)</h2>
+        <p class="text-xs sm:text-sm text-slate-200 mt-1">
+          Conceptos clave que vinculan el pensamiento de Michael Porter con la gobernanza y arquitectura de TI empresarial.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+          <div class="flex items-center gap-2.5 text-blue-600 dark:text-blue-400">
+            <i data-lucide="layers" class="w-5 h-5"></i>
+            <h3 class="font-bold text-base text-slate-900 dark:text-white">Alineación Estratégica (Strategic Alignment)</h3>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Consiste en garantizar que los objetivos, presupuestos e inversiones del área de TI soporten y potencien de forma directa la estrategia comercial de la empresa. Ningún proyecto de TI debe aprobarse sin identificar a qué ventaja competitiva contribuye.
+          </p>
+          <div class="text-xs font-semibold text-slate-500">
+            Pregunta directiva: <i>"¿Este nuevo software reduce costos unitarios o crea diferenciación apreciada por el cliente?"</i>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+          <div class="flex items-center gap-2.5 text-red-600 dark:text-red-400">
+            <i data-lucide="alert-octagon" class="w-5 h-5"></i>
+            <h3 class="font-bold text-base text-slate-900 dark:text-white">El Riesgo del "Atrapado en el Medio" en TI</h3>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Ocurre cuando la organización implementa sistemas costosos y complejos (intentando diferenciarse) pero al mismo tiempo recorta presupuesto en soporte, arquitectura y capacitación (intentando ahorrar). El resultado es TI cara, inestable y sin valor percibido.
+          </p>
+          <div class="text-xs font-semibold text-slate-500">
+            Consecuencia: Destrucción de ROI, deuda técnica insostenible y pérdida de cuota de mercado.
+          </div>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+          <div class="flex items-center gap-2.5 text-amber-600 dark:text-amber-400">
+            <i data-lucide="lock" class="w-5 h-5"></i>
+            <h3 class="font-bold text-base text-slate-900 dark:text-white">Vendor Lock-In y Costos de Cambio</h3>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Grado de subordinación técnica frente a un proveedor tecnológico (nube pública, software ERP o base de datos). Para mitigar el poder de negociación del proveedor, la Dirección de TI debe diseñar con estándares abiertos, contenedores (Docker/K8s) y contratos con SLAs claros.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 space-y-3">
+          <div class="flex items-center gap-2.5 text-emerald-600 dark:text-emerald-400">
+            <i data-lucide="radar" class="w-5 h-5"></i>
+            <h3 class="font-bold text-base text-slate-900 dark:text-white">Vigilancia Tecnológica e IA Disruptiva</h3>
+          </div>
+          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+            Monitoreo proactivo de tecnologías sustitutas (IA Generativa, automatización de código, SaaS vertical) mediante un Radar Tecnológico institucional. El objetivo es canibalizar y modernizar los servicios propios antes de que un sustituto externo destruya el modelo de negocio.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer id="footer-bar" class="border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 py-6 text-center text-xs text-slate-500 dark:text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-slate-700 dark:text-slate-300">Curso: Planeamiento y Dirección de TI</span>
+        <span>•</span>
+        <span>Modelos Estratégicos de Michael Porter</span>
+      </div>
+      <div>
+        <span>Desplegado con <span class="text-red-500">♥</span> en <b>GitHub Pages</b></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
